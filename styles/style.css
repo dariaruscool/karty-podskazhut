@@ -20,3 +20,326 @@ li,
 figure {
   margin: 0;
 }
+
+:root {
+  --bg-color: #F3EFEC;
+  --text-color: #312A4E;
+  --accent-color: #FFAB6B;
+  --main-font: 'Raleway';
+  --accent-font: 'STIX Two Text';
+}
+
+.page {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.heading {
+font-family: var(--accent-font);
+font-style: normal;
+font-weight: 600;
+line-height: 90%;
+text-align: center;
+}
+
+.header {
+  padding-block-start: 10%;
+}
+
+.content-section {
+  padding-inline-start: 5vi;
+  padding-inline-end: 5vi;
+}
+
+.header__title {
+  margin-bottom: 40px;
+  font-size: clamp(3.75rem, 2.5rem + 5.5556vw, 7.5rem);
+}
+
+.header__menu {
+  display: flex;
+  border-top: 1px solid var(--text-color);
+  border-bottom: 1px solid var(--text-color);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  justify-content: space-between;
+}
+
+.header__theme-toggler {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
+}
+
+/* сбросить отступы? позиция здесь должна быть задана?*/
+.header__theme-toggler__item {
+  list-style-type: none;
+  position: relative;
+}
+
+.header__theme-button {
+  cursor: pointer;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 104%;
+  color: var(--text-color);
+}
+
+/* для чего нужны эти классы? */
+.header__theme-button_type_dark {
+
+}
+
+.header__theme-button_type_light {
+
+}
+
+.header__theme-button_is-active {
+  font-weight: 700;
+}
+
+.header__theme-button:hover {
+  cursor: pointer;
+}
+
+.header__theme-button:hover:not(.header__theme-button_is-active) {
+  border-bottom: 1px solid currentColor;
+}
+
+/* нужно ли это здесь?
+button:active {
+  font-weight: 700;
+} */
+
+.header__theme-button_is-active::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 0.25em;
+  background-color: var(--accent-color);
+  z-index: -1;
+  transform: translateX(-80px) translateY(10px);
+}
+
+/* не поняла, куда добавлять состояние */
+button:disabled {
+  pointer-events: none;
+}
+
+button:focus, a:focus {
+  outline: none;
+}
+
+button:focus-visible, a:focus-visible {
+  border: 1px solid var(--text-color);
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+/* здесь марджины и падинги игнорируют фон буквицы */
+.content__title {
+  font-size: 30px;
+  margin-block-start: 7%;
+  margin-block-end: 2.5%;
+}
+
+/* добавила паддинг, но надо смотреть на 360 */
+.content__text-block {
+  font-size: 18px;
+  padding-top: 10px;
+}
+
+.content__paragraph {
+font-family: var(--main-font);
+font-style: normal;
+font-weight: 400;
+line-height: 21px;
+}
+
+/* 1.5 заменила на 1.6 */
+.content__text-block .content__paragraph:not(:last-child) {
+  padding-bottom: 1.6em;
+}
+
+.ref {
+  color: currentColor;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.content__blockquote {
+font-family: var(--main-font);
+font-style: italic;
+font-weight: 400;
+font-size: 18px;
+line-height: 200%;
+display: block;
+width: 75%;
+margin: auto auto 1.5em auto;
+}
+
+/* сбросить браузерные отступы?*/
+.content__list {
+list-style-type: none;
+font-family: var(--main-font);
+font-weight: 400;
+font-size: 18px;
+line-height: 21px;
+padding-inline-start: 40px;
+}
+
+.content__list__item {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.content__list__item:last-child {
+  padding-bottom: 0px;
+}
+
+/* у двух первых элементов проблема с позиционированием маркера */
+.content__list__item::before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-image: url(../images/marker-light.svg);
+  background-repeat: no-repeat;
+  position: absolute;
+  transform: translateX(-25px);
+}
+
+/* можно еще попробовать p:first-of-type */
+.content__text-block_type_first-lettered .content__paragraph:first-child:first-letter {
+  display: inline-block;
+  background-color: var(--accent-color);
+  font-size: 30px;
+  font-weight: 700;
+  padding-right: 4px;
+  padding-left: 0;
+  margin-right: 1px;
+}
+
+.picture {
+  display: flex;
+  margin-top: 10px;
+}
+
+/* марджины для 360 подходят 9 и 4 */
+.content__figure {
+  margin-block-start: 7%;
+  margin-block-end: 7%;
+  width: calc(100% + 10vi);
+  transform: translateX(-5vi);
+}
+
+.content__picture {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.content__picture-caption {
+display: block;
+margin: auto;
+font-family: var(--main-font);
+font-weight: 400;
+font-size: 18px;
+line-height: 21px;
+text-align: center;
+padding-block-start: 20px;
+padding-block-end: 20px;
+border-bottom: 1px solid var(--text-color);
+}
+
+.content__card {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 4 / 3;
+  border: 1px, solid, var(--text-color);
+  justify-content: center;
+  margin-top: 7%;
+}
+
+/* смущает gap, но без него не получается пробел */
+.content__card-title {
+  font-family: var(--accent-font);
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.1em;
+}
+
+.content__card-subtitle {
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+}
+
+.colored-text {
+  display: flex;
+  position: relative;
+}
+
+.colored-text::after {
+  content: "";
+  position: absolute;
+  width: 222px;
+  height: 0.25em;
+  background-color: var(--accent-color);
+  z-index: -1;
+  transform: translateY(0.5em);
+}
+
+.footer {
+  margin-top: 10%;
+  border-top: 1px solid var(--text-color);
+}
+
+.footer__copyright {
+  text-transform: uppercase;
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  padding: 2.5%;
+  text-align: center;
+}
+
+/* ТЕМНАЯ ТЕМА */
+.theme_dark {
+  --bg-color: #171717;
+  --text-color: #b3b3b3;
+  --accent-color: transparent;
+}
+
+.theme_dark .header__theme-button_is-active::after {
+  background-image: url(../images/pattern.svg);
+  cursor: pointer;
+}
+
+.theme_dark .content__text-block_type_first-lettered .content__paragraph:first-child:first-letter {
+  border: 1px solid var(--text-color);
+}
+
+.theme_dark .colored-text::after {
+  background-image: url(../images/pattern.svg);
+}
+
+.theme_dark .content__list__item::before {
+  background-image: url(../images/marker-dark.svg);
+}
